@@ -45,6 +45,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-navigator.app.loadUrl('https://caprica.drnotes.com.au/Development/Wasif/XCamera.nsf');
+	window.plugins.childBrowser.showWebPage('https://caprica.drnotes.com.au/Development/Wasif/XCamera.nsf','true');
+//navigator.app.loadUrl('https://caprica.drnotes.com.au/Development/Wasif/XCamera.nsf');
     }
 };
