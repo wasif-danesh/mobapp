@@ -1,43 +1,60 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<!-- This sample program is provided AS IS and may be used, executed, copied and
+modified without royalty payment by customer (a) for its own instruction and
+study, (b) in order to develop applications designed to run with an IBM
+WebSphere product, either for customer's own internal use or for redistribution
+by customer, as part of such an application, in customer's own products. 
 
-    http://www.apache.org/licenses/LICENSE-2.0
+5724-I63, 5724-H88, 5655-N01, 5733-W60 (C) COPYRIGHT International Business Machines Corp. 2011
+All Rights Reserved * Licensed Materials - Property of IBM --> 
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>        
-<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-<script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();		 
-        </script>
+  <head>
+    <title>HelloHybrid Mobile</title>
+    
+    <!-- DojoMobile -->
+	<link href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/mobile/themes/android/android.css" rel="stylesheet" /> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="isDebug:true, parseOnLoad:true"></script> 
+    <script type="text/javascript">
+	    dojo.require("dojox.mobile.parser");
+	    dojo.require("dojox.mobile");
+	    dojo.requireIf(!dojo.isWebKit,"dojox.mobile.compat");
+	</script>
+	
+    <!-- PhoneGap -->
+    <script type="text/javascript" charset="utf-8" src="phonegap.0.9.5.js"></script>
+    <script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
+  </head>
+  
+  <body>
+        
+  		<div id="mainView" dojoType="dojox.mobile.View" selected="true"> 
+			<h1 dojoType="dojox.mobile.Heading">HelloHybrid Mobile v0.5</h1> 
+ 
+			<ul dojoType="dojox.mobile.EdgeToEdgeList">
+				<li> 
+					<img src="pix/hhm.splash.jpg">
+				</li> 
+				<li dojoType="dojox.mobile.ListItem" moveTo="welcomeView"> 
+					Welcome
+				</li> 
+			</ul> 
+		</div>
+		 
+		<div id="welcomeView" dojoType="dojox.mobile.View"> 
+			<h1 dojoType="dojox.mobile.Heading" back="Main" moveTo="mainView">HelloHybrid Mobile</h1>
+			<p>Click for local mobile device info:</p> 
+            <button dojoType="dojox.mobile.Button" onClick="var deviceInfoID = dojo.byId('deviceInfo'); deviceInfoID.innerHTML = 
+                                'Device Name: '     + device.name     + '<br />' + 
+                                'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                                'Device Platform: ' + device.platform + '<br />' + 
+                                'Device UUID: '     + device.uuid     + '<br />' + 
+                                'Device Version: '  + device.version  + '<br />';">Device Info</button>
+            <p><div id="deviceInfo"></div></p>
+            
+            <p>Click to access server application:</p>
+            <button dojoType="dojox.mobile.Button" onClick="window.plugins.childBrowser.showWebPage('https://caprica.drnotes.com.au/Development/Wasif/XCamera.nsf/c.xsp','false');">Server App</button>
+        </div> 
     </body>
 </html>
