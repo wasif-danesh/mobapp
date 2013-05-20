@@ -1,0 +1,60 @@
+<!-- This sample program is provided AS IS and may be used, executed, copied and
+modified without royalty payment by customer (a) for its own instruction and
+study, (b) in order to develop applications designed to run with an IBM
+WebSphere product, either for customer's own internal use or for redistribution
+by customer, as part of such an application, in customer's own products. 
+
+5724-I63, 5724-H88, 5655-N01, 5733-W60 (C) COPYRIGHT International Business Machines Corp. 2011
+All Rights Reserved * Licensed Materials - Property of IBM --> 
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+                      "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>HelloHybrid Mobile</title>
+    
+    <!-- DojoMobile -->
+	<link href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/mobile/themes/android/android.css" rel="stylesheet" /> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojo/dojo.xd.js" djConfig="isDebug:true, parseOnLoad:true"></script> 
+    <script type="text/javascript">
+	    dojo.require("dojox.mobile.parser");
+	    dojo.require("dojox.mobile");
+	    dojo.requireIf(!dojo.isWebKit,"dojox.mobile.compat");
+	</script>
+	
+    <!-- PhoneGap -->
+    <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
+  </head>
+  
+  <body>
+        
+  		<div id="mainView" dojoType="dojox.mobile.View" selected="true"> 
+			<h1 dojoType="dojox.mobile.Heading">HelloHybrid Mobile v0.5</h1> 
+ 
+			<ul dojoType="dojox.mobile.EdgeToEdgeList">
+				<li> 
+					<img src="pix/hhm.splash.jpg">
+				</li> 
+				<li dojoType="dojox.mobile.ListItem" moveTo="welcomeView"> 
+					Welcome
+				</li> 
+			</ul> 
+		</div>
+		 
+		<div id="welcomeView" dojoType="dojox.mobile.View"> 
+			<h1 dojoType="dojox.mobile.Heading" back="Main" moveTo="mainView">HelloHybrid Mobile</h1>
+			<p>Click for local mobile device info:</p> 
+            <button dojoType="dojox.mobile.Button" onClick="var deviceInfoID = dojo.byId('deviceInfo'); deviceInfoID.innerHTML = 
+                                'Device Name: '     + device.name     + '<br />' + 
+                                'Device PhoneGap: ' + device.phonegap + '<br />' + 
+                                'Device Platform: ' + device.platform + '<br />' + 
+                                'Device UUID: '     + device.uuid     + '<br />' + 
+                                'Device Version: '  + device.version  + '<br />';">Device Info</button>
+            <p><div id="deviceInfo"></div></p>
+            
+            <p>Click to access server application:</p>
+            <button dojoType="dojox.mobile.Button" onClick="window.plugins.childBrowser.showWebPage('https://caprica.drnotes.com.au/Development/Wasif/XCamera.nsf/test?OpenPage',{ showLocationBar: false, showAddress: false, showNavigationBar: false });">Server App</button>
+        </div> 
+    </body>
+</html>
